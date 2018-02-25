@@ -1,12 +1,14 @@
 #include "../include/fractol.h"
 
-void	init_mandelbrot(t_param *p)
+void	init(t_param *p)
 {
 	p->zoom = 0.005;
 	p->iter_max = 70;
 	p->zoom_x = WH / 2;
 	p->zoom_y = HT / 2;
 	p->on = 1;
+	p->c_r = 0.285;
+	p->c_i = 0.01;
 }
 
 int		rgb(char r, char g, char b)
@@ -44,15 +46,52 @@ void	calculate_mandelbrot(t_param *p)
 		i++;
 	}
 	if (i == p->iter_max)
-		pixel_put(p, rgb((char)0, (char)0, (char)(255 / i) * i));
+		pixel_put(p, rgb((char)153, (char)51, (char)(204)));
 	else
-		pixel_put(p, 0);
+		pixel_put(p, rgb((char)0, (char)51, (char)51));
+}
+
+void	calculate_julia(t_param *p)
+{
+	int		i;
+
+	i = 0;
+	double	tmp;
+	p->c_r = 0.285;
+	p->c_i = 0.01;
+	p->z_r = (p->x - p->zoom_x) * p->zoom;
+	p->z_i = (p->y - p->zoom_y) * p->zoom;
+	while (p->z_r * p->z_r + p->z_i * p->z_i <= 4 && i < p->iter_max)
+	{
+		tmp = p->z_r;
+		p->z_r = p->z_r * p->z_r - p->z_i * p->z_i + p->c_r;
+		p->z_i = 2 * p->z_i * tmp + p->c_i;
+		i++;
+	}
+	if (i == p->iter_max)
+		pixel_put(p, rgb((char)153, (char)51, (char)(204 / i) * i));
+	else
+		pixel_put(p, rgb((char)0, (char)51, (char)51));
+}
+
+void	julia(t_param *p)
+{
+	p->y = 0;
+	while (p->y < HT)
+	{
+		p->x = 0;
+		while (p->x < WH)
+		{
+			calculate_julia(p);
+			p->x++;
+		}
+		p->y++;
+	}
+	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 }
 
 void	mandelbrot(t_param *p)
 {
-	if (p->on == 0)
-		init_mandelbrot(p);
 	p->y = 0;
 	while (p->y < HT)
 	{
@@ -117,8 +156,8 @@ void	launcher(t_param *p)
 {
 	if (p->fra == 1)
 		mandelbrot(p);
-//	if (p->fra == 2)
-//		julia(p);
+		if (p->fra == 2)
+			julia(p);
 }
 
 int		main(int ac, char **av)
@@ -131,9 +170,8 @@ int		main(int ac, char **av)
 	p->ac = ac;
 	which_fractal(p);
 	mlx_stuff(p);
-	init_mandelbrot(p);
+	init(p);
 	launcher(p);
-	mandelbrot(p);
 	mlx_loop(p->mlx);
 	return (0);
 }
