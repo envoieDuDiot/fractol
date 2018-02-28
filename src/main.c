@@ -3,12 +3,18 @@
 void	init(t_param *p)
 {
 	p->zoom = 0.005;
-	p->iter_max = 40;
+	p->iter_max = 34;
 	p->zoom_x = WH / 2;
 	p->zoom_y = HT / 2;
 	p->on = 1;
 	p->c_r = 0.285;
 	p->c_i = 0.01;
+	p->r = 0;
+	p->r2 = 0;
+	p->g = 0;
+	p->g2 = 0;
+	p->b = 51;
+	p->b2 = 51;
 }
 
 int		rgb(char r, char g, char b)
@@ -46,9 +52,9 @@ void	calculate_mandelbrot(t_param *p)
 		i++;
 	}
 	if (i == p->iter_max)
-		pixel_put(p, rgb((char)153, (char)51, (char)204));
+		pixel_put(p, rgb((char)p->r, (char)p->g, (char)((p->b * i) / p->iter_max)));
 	else
-		pixel_put(p, rgb((char)0, (char)51, (char)51));
+		pixel_put(p, rgb((char)p->r2, (char)p->g2, (char)((i * p->b2) / p->iter_max)));
 }
 
 void	calculate_julia(t_param *p)
@@ -185,7 +191,6 @@ void	which_fractal(t_param *p)
 
 int		keycode(int k, t_param *p)
 {
-	printf("k = %d\n", k);
 	if (k == ESC)
 		exit(0);
 	if (k == UP)

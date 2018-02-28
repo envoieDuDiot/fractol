@@ -21,6 +21,14 @@ typedef struct	s_param
 	int		x;
 	int		y;
 
+	int		it;
+
+	int		r;
+	int		r2;
+	int		g;
+	int		g2;
+	int		b;
+	int		b2;
 	double	zoom;
 	int		iter_max;
 	double	zoom_x;
