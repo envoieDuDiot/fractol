@@ -23,7 +23,9 @@ typedef struct	s_param
 
 	int		it;
 
-	int		r;
+	double q;
+	double d;
+	int 	r;
 	int		r2;
 	int		g;
 	int		g2;
