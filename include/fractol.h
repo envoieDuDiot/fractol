@@ -7,8 +7,8 @@
 #include <limits.h>
 #include <wchar.h>
 
-# define HT 1080
-# define WH 1080
+# define HT 680
+# define WH 680
 
 # define ESC 53
 # define UP 126
@@ -20,8 +20,6 @@ typedef struct	s_param
 {
 	int		x;
 	int		y;
-
-	int		it;
 
 	double q;
 	double d;
@@ -41,7 +39,6 @@ typedef struct	s_param
 	double	z_i;
 
 	int		fra;
-	int		on;
 
 	int		ac;
 	char	*argv;
