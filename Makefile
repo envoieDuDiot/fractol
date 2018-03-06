@@ -28,7 +28,7 @@ SRC_PATH = ./src/
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 INC_NAME = fractol.h
-SRC_NAME = main.c
+SRC_NAME = main.c absolue.c hook.c hook2.c init.c julia.c mandelbrot.c stuff.c tangente.c usefull.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
