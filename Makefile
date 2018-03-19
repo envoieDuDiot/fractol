@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gbryon <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: gbryon <gbryon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 08:42:33 by gbryon            #+#    #+#              #
-#    Updated: 2018/03/02 21:29:34 by gbryon           ###   ########.fr        #
+#    Updated: 2018/03/14 04:08:52 by gbryon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_PATH = ./src/
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 INC_NAME = fractol.h
-SRC_NAME = main.c absolue.c hook.c hook2.c init.c julia.c mandelbrot.c stuff.c tangente.c usefull.c
+SRC_NAME = main.c absolue.c hook.c hook2.c init.c julia.c mandelbrot.c stuff.c tangente.c usefull.c burningship.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
@@ -57,6 +57,6 @@ clean:
 fclean: clean
 		@make -C $(LFT_PATH) fclean
 		@rm -f $(NAME)
-		@echo "$(KOCC)$(NAME) REMOVED$(END)"
+		@echo "$(KOC)$(NAME) REMOVED$(END)"
 
 re: fclean all

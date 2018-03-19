@@ -110,11 +110,13 @@ int		mouse_scroll(int k, int x, int y, t_param *p)
 	if (k == 1 && p->fra <= 4)
 		p->fra += 1;
 	if (k == 2 && p->fra >= 2)
-	p->fra -= 1;
+		p->fra -= 1;
 	if (k == 4 && p->zoom > 0.000001)
 		scroll_zoom_in(x, y, p);
 	if (k == 5 && p->zoom < 0.2)
 		scroll_zoom_out(x, y, p);
+	if (k == 1 && (x >= 50 && x <= 60) && (y >= -14 && y <= -4))
+		exit(0);
 	launcher(p);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stuff.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbryon <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gbryon <gbryon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:12:57 by gbryon            #+#    #+#             */
-/*   Updated: 2018/03/06 16:12:58 by gbryon           ###   ########.fr       */
+/*   Updated: 2018/03/14 03:18:45 by gbryon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	mlx_stuff(t_param *p)
 	p->mlx = mlx_init();
 	p->win = mlx_new_window(p->mlx, WH, HT, "Fractol");
 	p->img = mlx_new_image(p->mlx, WH, HT);
+	mlx_string_put(p->mlx, p->win, 40, 22, 0xffffff, "hello essai");
 	mlx_hook(p->win, 2, 0, keycode, p);
 	mlx_hook(p->win, 6, 0, mouse_move, p);
 	mlx_hook(p->win, 4, (1L << 2), &mouse_scroll, p);

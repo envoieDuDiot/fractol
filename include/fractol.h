@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbryon <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gbryon <gbryon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:53:27 by gbryon            #+#    #+#             */
-/*   Updated: 2018/03/06 16:57:33 by gbryon           ###   ########.fr       */
+/*   Updated: 2018/03/14 04:08:14 by gbryon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void			ft_random_fabs(t_param *p);
 void			calculate_mandelbrot(t_param *p);
 void			mandelbrot(t_param *p);
 void			calculate_mandelbrot_v2(t_param *p);
+void			calculate_burningship(t_param *p);
+void			burningship(t_param *p);
 void			mandelbrot_v2(t_param *p);
 void			init(t_param *p);
 int				rgb(char r, char g, char b);
